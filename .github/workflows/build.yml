@@ -765,6 +765,8 @@ jobs:
           mkdir proj && unzip -q p.zip -d proj
           curl -sL -o proj/app/src/main/assets/three.min.js https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js
           ls -la proj/app/src/main/assets
+          cat proj/app/src/main/AndroidManifest.xml
+           sed -i "s/catch(err){\$('fatal').hidden=false;return;}/catch(err){\$('fatal').hidden=false;\$('fatal').textContent=String(err);return;}/" proj/app/src/main/assets/game.js
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
